@@ -5,20 +5,15 @@ import argparse
 import imutils
 import cv2
 
-def mostrar(image):
-    cv2.imshow("Image", image)
-    cv2.waitKey(0)
-
 # construct the argument parse and parse the arguments
-#ap = argparse.ArgumentParser()
-#ap.add_argument("-i", "--image", required=True, help="path to the input image")
-#args = vars(ap.parse_args())
+ap = argparse.ArgumentParser()
+ap.add_argument("-i", "--image", required=True, help="path to the input image")
+args = vars(ap.parse_args())
 
 ANSWER_KEY = {0: 1, 1: 4, 2: 0, 3: 3, 4: 1}
 
 # Load image and detect exam
-#image = cv2.imread(args["image"])
-image = cv2.imread("images/test_01.png")
+image = cv2.imread(args["image"])
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0) # reduce high frequency noise
 edged = cv2.Canny(blurred, 75, 200) # find edges/outlines
